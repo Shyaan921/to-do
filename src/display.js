@@ -1,31 +1,23 @@
-import { projects } from "./project"
+import { addProjectEventListeners } from "./project"
 
-function updateProjectDisplay() {
-
+function displayProjects() {
     let sidebar = document.querySelector('.sidebar')
-    let content = document.querySelector('.content')
     sidebar.innerHTML = ''
-
-    //Gets stuff from local library
     Object.keys(localStorage).forEach(function(key) {
-        let btn = document.createElement('button')
-        btn.classList = 'projectBtns'
-        btn.value = key;
-        btn.innerText = key
-        sidebar.appendChild(btn)
+        let projectBtn = document.createElement('button')
+        projectBtn.value = key
+        projectBtn.classList = 'projectBtns'
+        projectBtn.innerText = key
+        sidebar.appendChild(projectBtn)
     })
 
-    //Makes a the add project button
-    let projectAddBtn = document.createElement('button')
-    projectAddBtn.classList = 'addProject'
-    projectAddBtn.innerText = 'Add Project +'
-    sidebar.appendChild(projectAddBtn)
-
-    projectAddBtn.addEventListener('click', function() {
-        let project = new projects(prompt('Name: '))
-        localStorage.setItem(project.name, project.todoList)
-        updateProjectDisplay()
-    })
+    let addProjectBtn = document.createElement('button')
+    addProjectBtn.classList = 'addProjectBtns'
+    addProjectBtn.innerText = "+ Add Project"
+    sidebar.appendChild(addProjectBtn)
+    addProjectEventListeners()
 }
 
-export { updateProjectDisplay }
+
+
+export { displayProjects }

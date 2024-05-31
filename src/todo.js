@@ -7,4 +7,14 @@ class todo {
     }
 }
 
-export { todo }
+function addTodoEventListener() {
+    let content = document.querySelector('.content')
+    let addTodoBtn = document.querySelector('.todoBtn')
+    let dialog = document.querySelector('dialog')
+    addTodoBtn.addEventListener('click', function() {
+        dialog.showModal()
+    });
+};
+
+
+export { todo, addTodoEventListener }

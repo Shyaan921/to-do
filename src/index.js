@@ -1,7 +1,7 @@
 import "./styles.css"
-import { todo } from "./todo"
-import { projects } from "./project"
-import { updateProjectDisplay } from "./display"
+import { todo, addTodoEventListener } from "./todo"
+import { projects, addProjectEventListeners } from "./project"
+import { displayProjects } from "./display"
 
-localStorage.clear()
-updateProjectDisplay()
+displayProjects()
+addProjectEventListeners()
