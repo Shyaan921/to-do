@@ -1,4 +1,5 @@
 import { addTodoEventListener } from "./todo"
+import { displayProjects } from "./display"
 
 class projects {
     constructor(name) {
@@ -24,6 +25,13 @@ function addProjectEventListeners() {
             content.appendChild(addTodoBtn)
             addTodoEventListener()
         })
+    })
+
+    let addProjectBtn = document.querySelector('.addProjectBtn')
+    addProjectBtn.addEventListener('click', function() {
+        let newProject = new projects(prompt('Name: '))
+        localStorage.setItem(newProject.name, JSON.stringify(newProject))
+        displayProjects()
     })
 }
 

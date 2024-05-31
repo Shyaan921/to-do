@@ -12,7 +12,7 @@ function displayProjects() {
     })
 
     let addProjectBtn = document.createElement('button')
-    addProjectBtn.classList = 'addProjectBtns'
+    addProjectBtn.classList = 'addProjectBtn'
     addProjectBtn.innerText = "+ Add Project"
     sidebar.appendChild(addProjectBtn)
     addProjectEventListeners()

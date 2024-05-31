@@ -3,5 +3,24 @@ import { todo, addTodoEventListener } from "./todo"
 import { projects, addProjectEventListeners } from "./project"
 import { displayProjects } from "./display"
 
+let form = document.querySelector('form')
+
+
 displayProjects()
-addProjectEventListeners()
+form.addEventListener('submit', function(e) {
+    e.preventDefault()
+    
+    let dialog = document.querySelector('dialog')
+    let title = document.getElementById('title').value
+    let description = document.getElementById('description').value
+    let priority = document.getElementById('priority').value
+    let dueDate = document.getElementById('dueDate').value
+    let addTodo = document.querySelector('.todoBtn').value
+
+    let node = new todo(title, description, priority, dueDate)
+    let project = JSON.parse(localStorage.getItem(addTodo))
+    project.todoList.push(node)
+    localStorage.setItem(project.name, JSON.stringify(project))
+    form.reset()
+    dialog.close()
+})
