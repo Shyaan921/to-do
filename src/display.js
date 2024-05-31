@@ -32,9 +32,9 @@ function displayTodos(projectName) {
         div.classList.add(todo.priority)
         div.classList.add('card')
 
-        nameDiv.innerText = todo.name
-        descriptionDiv.innerText = todo.description
-        dateDiv.innerText = todo.dueDate
+        nameDiv.innerText = 'Name: ' +  todo.name
+        descriptionDiv.innerText = 'Description: ' + todo.description
+        dateDiv.innerText = 'Due Date: ' +  todo.dueDate
 
         div.appendChild(nameDiv)
         div.appendChild(descriptionDiv)
