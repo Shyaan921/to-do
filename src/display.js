@@ -1,4 +1,5 @@
 import { addProjectEventListeners } from "./project"
+import { addTodoEventListener } from "./todo"
 
 function displayProjects() {
     let sidebar = document.querySelector('.sidebar')
@@ -18,6 +19,38 @@ function displayProjects() {
     addProjectEventListeners()
 }
 
+function displayTodos(projectName) {
+    let list = JSON.parse(localStorage.getItem(projectName)).todoList
+    let content = document.querySelector('.content')
+    content.innerHTML = ''
+    list.forEach(function(todo) {
+        let div = document.createElement('div')
+        let nameDiv = document.createElement('div')
+        let descriptionDiv = document.createElement('div')
+        let dateDiv = document.createElement('div')
+
+        div.classList.add(todo.priority)
+        div.classList.add('card')
+
+        nameDiv.innerText = todo.name
+        descriptionDiv.innerText = todo.description
+        dateDiv.innerText = todo.dueDate
+
+        div.appendChild(nameDiv)
+        div.appendChild(descriptionDiv)
+        div.appendChild(dateDiv)
+
+        content.appendChild(div)
+    })
+
+    let addTodoBtn = document.createElement('button')
+    addTodoBtn.classList = 'todoBtn'
+    addTodoBtn.value = projectName
+    addTodoBtn.innerText = "+ Add Todo"
+    content.appendChild(addTodoBtn)
+    addTodoEventListener()
+}   
 
 
-export { displayProjects }
+
+export { displayProjects, displayTodos }

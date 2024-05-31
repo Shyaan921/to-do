@@ -1,5 +1,5 @@
-import { addTodoEventListener } from "./todo"
-import { displayProjects } from "./display"
+
+import { displayProjects, displayTodos } from "./display"
 
 class projects {
     constructor(name) {
@@ -18,12 +18,9 @@ function addProjectEventListeners() {
     projectBtns.forEach(function(btn) {
         btn.addEventListener('click', function() {
             content.innerHTML = ''
-            let addTodoBtn = document.createElement('button')
-            addTodoBtn.classList = 'todoBtn'
-            addTodoBtn.value = btn.value
-            addTodoBtn.innerText = "+ Add Todo"
-            content.appendChild(addTodoBtn)
-            addTodoEventListener()
+
+            // add todo shower here
+            displayTodos(btn.value)
         })
     })
 

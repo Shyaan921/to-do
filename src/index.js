@@ -1,7 +1,7 @@
 import "./styles.css"
 import { todo, addTodoEventListener } from "./todo"
 import { projects, addProjectEventListeners } from "./project"
-import { displayProjects } from "./display"
+import { displayProjects, displayTodos } from "./display"
 
 let form = document.querySelector('form')
 
@@ -21,6 +21,7 @@ form.addEventListener('submit', function(e) {
     let project = JSON.parse(localStorage.getItem(addTodo))
     project.todoList.push(node)
     localStorage.setItem(project.name, JSON.stringify(project))
+    displayTodos(addTodo)
     form.reset()
     dialog.close()
 })
